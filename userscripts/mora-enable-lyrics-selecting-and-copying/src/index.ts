@@ -1,5 +1,13 @@
 /// <reference path="mora.d.ts" />
 
+console.info("Injecting inline style...");
+injectStyle(`
+    body
+    {
+        user-select: auto !important;
+    }
+`);
+
 const isLyrics = location.pathname.startsWith("/lyrics");
 
 const EVENT_TYPES = [
@@ -26,3 +34,13 @@ EventTarget.prototype.addEventListener = new Proxy(EventTarget.prototype.addEven
         return Reflect.apply(target, that, args);
     },
 });
+
+function injectStyle(css: string): HTMLElement
+{
+    const style = document.createElement("style");
+    style.setAttribute("type", "text/css");
+    style.textContent = css;
+ 
+    const target = document.head ?? document.documentElement;
+    return target.appendChild(style);
+}
