@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    branches: 
+      - master
+
+permissions: 
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release_please.outputs.releases_created }}
+      paths_released: ${{ steps.release_please.outputs.paths_released }}
+      release_please_outputs: ${{ toJSON(steps.release_please.outputs) }}
+    steps:
+      - id: release_please
+        uses: googleapis/release-please-action@v4
+
+  build-released:
+    name: Build and Publish Released
+    needs: release
+    if: needs.release.outputs.releases_created == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path: ${{ fromJson(needs.release.outputs.paths_released) }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+      - run: npm ci --workspaces
+
+      - name: Build UserScripts
+        run: npm run build -- --filter="./${{ matrix.path }}"
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ fromJSON(needs.release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}
+          fail_on_unmatched_files: true
+          files: |
+            ./${{ matrix.path }}/dist/*.user.js
