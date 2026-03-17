@@ -16,7 +16,7 @@ function handleAnchor(anchor: HTMLAnchorElement): boolean
 
     if (url.hostname !== location.hostname)
     {
-        console.debug("Found href on %o linked to another mirror: %s", anchor, url.href);
+        console.debug("Found href on %o linked to another mirror: %s", anchor, url.hostname);
 
         url.hostname = location.hostname;
         anchor.href = url.href;
