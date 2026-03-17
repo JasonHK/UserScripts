@@ -1,12 +1,9 @@
 /// <reference path="mora.d.ts" />
 
+import style from "./style.css?inline";
+
 console.info("Injecting inline style...");
-injectStyle(`
-    body
-    {
-        user-select: auto !important;
-    }
-`);
+injectStyle(style);
 
 const isLyrics = location.pathname.startsWith("/lyrics");
 

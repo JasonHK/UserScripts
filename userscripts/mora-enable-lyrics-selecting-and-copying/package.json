@@ -8,7 +8,7 @@
     "name": "Jason Kwok",
     "email": "userscripts@jasonhk.dev"
   },
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "tsc && vite build"
