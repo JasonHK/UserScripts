@@ -31,7 +31,7 @@
 ## 1.0.1 (2024-02-19)
 
 
-### Fixes
+### Bug Fixes
 
 - Fixed breakage on translated UI
 
