@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/JasonHK/UserScripts/compare/kadokawa-tw-blurs-r-rated-covers/v2.1.0...kadokawa-tw-blurs-r-rated-covers/v2.1.1) (2026-03-17)
+
+
+### Bug Fixes
+
+* **kadokawa-tw-blurs-r-rated-covers:** fix typo in CSS ([dbe7992](https://github.com/JasonHK/UserScripts/commit/dbe7992c81f00c3421d9639afcc6c059123bfe90))
+
 ## 2.1.0 (2025-12-28)
 
 

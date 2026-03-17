@@ -1,6 +1,6 @@
 {
   "name": "kadokawa-tw-blurs-r-rated-covers",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": true,
   "description": "Blurs the covers of R-rated books at Kadokawa TW.",
   "license": "MIT",
