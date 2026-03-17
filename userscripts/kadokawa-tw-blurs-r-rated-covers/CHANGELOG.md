@@ -5,7 +5,7 @@
 
 ### Bug Fixes
 
--  Fixed covers not blurred in some cases
+- Fixed covers not blurred in some cases
 
 ## 2.0.4 (2025-12-28)
 
