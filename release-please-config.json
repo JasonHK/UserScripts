@@ -8,6 +8,7 @@
     "tag-separator": "/",
     "packages": {
         "userscripts/esj-zone-repair-non-clickable-chapters": {},
+        "userscripts/esj-zone-unify-domain-names": {},
         "userscripts/kadokawa-tw-blurs-r-rated-covers": {},
         "userscripts/mora-enable-lyrics-selecting-and-copying": {}
     }
