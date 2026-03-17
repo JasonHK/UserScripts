@@ -4,7 +4,7 @@
     transition: 0.4s, filter var(--nsfw-transition-duration, 0.3s);
 }
 
-.product-item.nsfw:hover .boxify-image, .productitem.nsfw:focus-within .boxify-image
+.product-item.nsfw:hover .boxify-image, .product-item.nsfw:focus-within .boxify-image
 {
     filter: blur(0px);
 }
