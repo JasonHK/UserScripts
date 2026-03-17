@@ -1,6 +1,6 @@
 {
   "name": "esj-zone-repair-non-clickable-chapters",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Repair chapter links that were not-clickable due to for example, author misconfigured or by-designed.",
   "license": "MIT",

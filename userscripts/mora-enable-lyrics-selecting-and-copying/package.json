@@ -1,6 +1,6 @@
 {
   "name": "mora-enable-lyrics-selecting-and-copying",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Disable the style and event handlers blocking the selection and copy of lyrics.",
   "license": "MIT",
