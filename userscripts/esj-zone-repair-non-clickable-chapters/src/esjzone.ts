@@ -1,6 +1,6 @@
 import { GM } from "$";
 
-const noop: typeof translateText = (text: string | null | undefined) => String(text);
+const noop: typeof translateText = (text: string | null | undefined) => (text ?? "");
 
 /**
  * The global `translateText()` function from the website.
