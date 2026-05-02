@@ -1,11 +1,4 @@
-/// <reference path="mora.d.ts" />
-
-import style from "./style.css?inline";
-
-console.info("Injecting inline style...");
-injectStyle(style);
-
-const isLyrics = location.pathname.startsWith("/lyrics");
+import style from "./style.css?style";
 
 const EVENT_TYPES = [
     "contextmenu",
@@ -16,13 +9,24 @@ const EVENT_TYPES = [
     "selectstart",
 ];
 
+const isLyricsPage = location.pathname.startsWith("/lyrics");
+
+window.addEventListener("load", () =>
+{
+    if (isLyricsPage || !isPC)
+    {
+        console.info("Injecting inline style...");
+        (document.head ?? document.documentElement).append(style);
+    }
+});
+
 type addEventListener = typeof EventTarget.prototype.addEventListener;
 EventTarget.prototype.addEventListener = new Proxy(EventTarget.prototype.addEventListener,
 {
     apply(target: addEventListener, that: EventTarget, args: Parameters<addEventListener>): ReturnType<addEventListener>
     {
         const type = args[0];
-        if (EVENT_TYPES.includes(type) && (that === document.body) && (isLyrics || !window.isPC))
+        if (EVENT_TYPES.includes(type) && (that === document.body) && (isLyricsPage || !isPC))
         {
             console.info("Defused \"%s\" event for %o", type, that);
             return;
@@ -31,13 +35,3 @@ EventTarget.prototype.addEventListener = new Proxy(EventTarget.prototype.addEven
         return Reflect.apply(target, that, args);
     },
 });
-
-function injectStyle(css: string): HTMLElement
-{
-    const style = document.createElement("style");
-    style.setAttribute("type", "text/css");
-    style.textContent = css;
- 
-    const target = document.head ?? document.documentElement;
-    return target.appendChild(style);
-}
