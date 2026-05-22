@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/JasonHK/UserScripts/compare/mora-enable-lyrics-selecting-and-copying/v1.1.1...mora-enable-lyrics-selecting-and-copying/v1.2.0) (2026-05-22)
+
+
+### Features
+
+* **mora-enable-lyrics-selecting-and-copying:** add conditional style injection ([#4](https://github.com/JasonHK/UserScripts/issues/4)) ([117ecb3](https://github.com/JasonHK/UserScripts/commit/117ecb39f72bffaf34338727d219caeeefd83c51))
+
+
+### Bug Fixes
+
+* **mora-enable-lyrics-selecting-and-copying:** more reliable device type checking ([117ecb3](https://github.com/JasonHK/UserScripts/commit/117ecb39f72bffaf34338727d219caeeefd83c51))
+
 ## [1.1.1](https://github.com/JasonHK/UserScripts/compare/mora-enable-lyrics-selecting-and-copying/v1.1.0...mora-enable-lyrics-selecting-and-copying/v1.1.1) (2026-03-17)
 
 
