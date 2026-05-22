@@ -15,7 +15,7 @@ window.addEventListener("load", () =>
 {
     if (typeof isPC !== "boolean")
     {
-        console.warn("Global variable isPC is either not exist or not a boolean (possibly website's internal changed), please contact the UserScript's maintainer for further investigation.");
+        console.warn("Global variable isPC does not exist or is not a boolean (possibly website internals changed); please contact the UserScript's maintainer for further investigation.");
     }
 
     if (isLyricsPage || ((typeof isPC === "boolean") ? !isPC : true))
