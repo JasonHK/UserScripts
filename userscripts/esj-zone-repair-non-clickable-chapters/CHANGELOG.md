@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/JasonHK/UserScripts/compare/esj-zone-repair-non-clickable-chapters/v1.1.1...esj-zone-repair-non-clickable-chapters/v1.1.2) (2026-05-22)
+
+
+### Bug Fixes
+
+* **esj-zone-repair-non-clickable-chapters:** improve reliability on retrieving the `translateText` function ([#12](https://github.com/JasonHK/UserScripts/issues/12)) ([0e5ed1c](https://github.com/JasonHK/UserScripts/commit/0e5ed1c45893ac0954fab593487d536127b0fd01))
+
 ## [1.1.1](https://github.com/JasonHK/UserScripts/compare/esj-zone-repair-non-clickable-chapters/v1.1.0...esj-zone-repair-non-clickable-chapters/v1.1.1) (2026-03-17)
 
 
