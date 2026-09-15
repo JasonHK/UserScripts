@@ -1,5 +1,6 @@
 {
     "userscripts/esj-zone-repair-non-clickable-chapters": "1.1.1",
+    "userscripts/esj-zone-unify-domain-names": "1.1.0",
     "userscripts/kadokawa-tw-blurs-r-rated-covers": "2.1.1",
     "userscripts/mora-enable-lyrics-selecting-and-copying": "1.1.1"
 }
