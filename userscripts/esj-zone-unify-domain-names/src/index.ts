@@ -4,7 +4,7 @@ const WHITELISTED_HOSTNAMES = [
     "www.esjzone.me",
 ];
 
-const results = await Promise.all(Array.from(document.getElementsByTagName("a")).map(handleAnchorAsync));
+const results = Array.from(document.getElementsByTagName("a")).map(handleAnchor);
 console.info("Updated %d URL(s).", results.reduce((last, result) => (last + Number(result)), 0));
 
 function handleAnchor(anchor: HTMLAnchorElement): boolean
@@ -24,9 +24,4 @@ function handleAnchor(anchor: HTMLAnchorElement): boolean
     }
 
     return false;
-}
-
-async function handleAnchorAsync(anchor: HTMLAnchorElement): Promise<boolean>
-{
-    return handleAnchor(anchor);
 }
