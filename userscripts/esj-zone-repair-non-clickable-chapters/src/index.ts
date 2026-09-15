@@ -60,6 +60,8 @@ function createRepairChapterTask(novelUrl: string, chapter: Text, chapterWrapper
 
 async function findChapterUrl(novelUrl: string, chapterName: string): Promise<string | null>
 {
+    chapterName = chapterName.trim();
+    
     const response = await fetch(novelUrl);
     if (response.status === 200)
     {
