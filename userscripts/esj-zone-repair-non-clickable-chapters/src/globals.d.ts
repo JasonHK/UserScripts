@@ -12,7 +12,7 @@ declare function getCookie(name: string): string | null;
  * @param text A text to convert
  * @returns The converted text
  */
-declare function translateText(text: string): string;
+declare function translateText(text: string | null | undefined): string;
 
 /**
  * The name for the converting script type cookie.

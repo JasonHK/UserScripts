@@ -1,14 +1,20 @@
 import { GM } from "$";
 
+const noop: typeof translateText = (text: string | null | undefined) => (text ?? "");
+
 /**
  * The global `translateText()` function from the website.
  */
-export let translateText: typeof window.translateText;
-if (GM.info.scriptHandler === "Greasemonkey")
+const _translateText: typeof translateText = (() =>
 {
-    translateText = window.eval("getCookie(targetEncodingCookie)") ? window.eval("translateText") : ((text) => text);
-}
-else
-{
-    translateText = getCookie(targetEncodingCookie) ? window.translateText : ((text) => text);
-}
+    if (GM.info.scriptHandler === "Greasemonkey")
+    {
+        return window.eval(`typeof translateText === "function"`) ? window.eval("translateText") as typeof translateText : noop;
+    }
+    else
+    {
+        return (typeof translateText === "function") ? translateText : noop;
+    }
+})();
+
+export { _translateText as translateText };

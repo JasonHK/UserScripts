@@ -40,7 +40,7 @@ else
 
 function createRepairChapterTask(novelUrl: string, chapter: Text, chapterWrapper: Element): () => Promise<void>
 {
-    async function repairChapter()
+    async function repairChapter(): Promise<void>
     {
         const url = await findChapterUrl(novelUrl, chapter.data);
         if (url)
