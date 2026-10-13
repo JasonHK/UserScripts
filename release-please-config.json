@@ -6,6 +6,7 @@
     "draft-pull-request": true,
     "include-component-in-tag": true,
     "tag-separator": "/",
+    "draft": true,
     "packages": {
         "userscripts/esj-zone-repair-non-clickable-chapters": {},
         "userscripts/kadokawa-tw-blurs-r-rated-covers": {},
