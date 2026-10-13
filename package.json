@@ -1,28 +1,31 @@
 {
   "name": "userscripts",
   "version": "0.0.0",
-  "private": true,
   "description": "",
   "homepage": "https://github.com/JasonHK/UserScripts#readme",
   "bugs": {
     "url": "https://github.com/JasonHK/UserScripts/issues"
   },
+  "license": "MIT",
+  "author": "",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JasonHK/UserScripts.git"
   },
-  "license": "MIT",
-  "author": "",
+  "scripts": {
+    "build": "pnpm --filter='./userscripts/*' run build"
+  },
   "type": "commonjs",
-  "main": "index.js",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "error",
+      "version": "12.x"
+    }
+  },
+  "private": true,
   "workspaces": [
     "userscripts/*"
-  ],
-  "scripts": {
-    "build": "turbo run build"
-  },
-  "devDependencies": {
-    "turbo": "^2.10.13"
-  },
-  "packageManager": "npm@11.9.0"
+  ]
 }

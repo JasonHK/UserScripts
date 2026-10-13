@@ -1,0 +1,9 @@
+packages:
+  - userscripts/*
+
+catalog:
+  "@tsconfig/recommended": ^1.0.13
+  queue: ^7.0.0
+  typescript: ^6.0.3
+  vite: ^8.3.4
+  vite-plugin-monkey: ^8.1.1
