@@ -40,6 +40,9 @@ jobs:
     strategy:
       matrix:
         path: ${{ fromJson(needs.prepare_release.outputs.paths_released) }}
+    env:
+      TARGET_PATH: ${{ matrix.path }}
+      TAG_NAME: ${{ fromJSON(needs.prepare_release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}
     steps:
       - name: Check out master
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -62,17 +65,41 @@ jobs:
       - name: Upload to GitHub release
         uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
         with:
-          tag_name: ${{ fromJSON(needs.prepare_release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}
+          tag_name: ${{ env.TAG_NAME }}
           draft: true
           files: |
-            ./${{ matrix.path }}/dist/*.meta.js
-            ./${{ matrix.path }}/dist/*.user.js
+            ${{ matrix.path }}/dist/*.meta.js
+            ${{ matrix.path }}/dist/*.user.js
           fail_on_unmatched_files: true
 
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release edit "${{ fromJSON(needs.prepare_release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}" --draft=false
+        run: gh release edit "$TAG_NAME" --draft=false
+
+      - name: Update releases branch
+        run: |
+          set -euo pipefail
+
+          RELEASE_PATH="${TARGET_PATH##*/}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin refs/heads/releases:refs/remotes/origin/releases
+          git switch --force-create releases --track origin/releases
+
+          rm --force "$RELEASE_PATH/*.meta.js" "$RELEASE_PATH/*.user.js"
+          cp "$TARGET_PATH/dist/*.meta.js" "$TARGET_PATH/dist/*.user.js" .
+
+          git add -- "$RELEASE_PATH/*.meta.js" "$RELEASE_PATH/*.user.js"
+
+          if ! git diff --cached --quiet; then
+            git commit --message="chore(releases): release $TAG_NAME"
+            git push origin releases
+          else
+            echo "No release to commit"
+          fi
 
   draft_next_release:
     name: Draft next release
