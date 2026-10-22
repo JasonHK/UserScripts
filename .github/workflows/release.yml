@@ -40,6 +40,7 @@ jobs:
     strategy:
       matrix:
         path: ${{ fromJson(needs.prepare_release.outputs.paths_released) }}
+      max-parallel: 1
     env:
       TARGET_PATH: ${{ matrix.path }}
       TAG_NAME: ${{ fromJSON(needs.prepare_release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}
