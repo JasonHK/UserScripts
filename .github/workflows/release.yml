@@ -90,11 +90,11 @@ jobs:
           git fetch origin refs/heads/releases:refs/remotes/origin/releases
           git switch --force-create releases --track origin/releases
 
-          mkdir --parents $RELEASE_PATH
-          rm --force $RELEASE_PATH/*.meta.js $RELEASE_PATH/*.user.js
-          cp $TARGET_PATH/dist/*.meta.js $TARGET_PATH/dist/*.user.js $RELEASE_PATH
+          mkdir --parents "$RELEASE_PATH"
+          rm --force "$RELEASE_PATH"/*.meta.js "$RELEASE_PATH"/*.user.js
+          cp "$TARGET_PATH"/dist/*.meta.js "$TARGET_PATH"/dist/*.user.js "$RELEASE_PATH"
 
-          git add -- $RELEASE_PATH/*.meta.js $RELEASE_PATH/*.user.js
+          git add --all -- "$RELEASE_PATH"
 
           if ! git diff --cached --quiet; then
             git commit --message="chore(releases): release $TAG_NAME"
