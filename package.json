@@ -14,7 +14,7 @@
     "url": "git+https://github.com/JasonHK/UserScripts.git"
   },
   "scripts": {
-    "build": "pnpm --filter='./userscripts/*' run build"
+    "build": "pnpm --filter=./userscripts/* run build"
   },
   "type": "commonjs",
   "devEngines": {

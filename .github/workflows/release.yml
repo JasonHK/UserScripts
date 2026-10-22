@@ -43,14 +43,14 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024
+        with:
+          install: true
+          require-lockfile: true
 
       - name: Setup Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: 24.x
-
-      - name: Install dependencies
-        run: pnpm ci
 
       - name: Build userscript
         run: pnpm --filter='./${{ matrix.path }}' run build
