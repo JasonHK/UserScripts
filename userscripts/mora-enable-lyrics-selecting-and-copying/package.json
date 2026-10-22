@@ -1,17 +1,15 @@
 {
   "name": "mora-enable-lyrics-selecting-and-copying",
   "version": "1.1.1",
-  "private": true,
   "description": "Disable the style and event handlers blocking the selection and copy of lyrics.",
   "license": "MIT",
   "author": {
-    "name": "Jason Kwok",
-    "email": "userscripts@jasonhk.dev"
+    "email": "userscripts@jasonhk.dev",
+    "name": "Jason Kwok"
   },
-  "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -19,5 +17,7 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-monkey": "catalog:"
-  }
+  },
+  "private": true,
+  "type": "module"
 }

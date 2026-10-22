@@ -1,14 +1,12 @@
 {
   "name": "esj-zone-repair-non-clickable-chapters",
   "version": "1.1.1",
-  "private": true,
   "description": "Repair chapter links that were not-clickable due to for example, author misconfigured or by-designed.",
   "license": "MIT",
   "author": {
-    "name": "Jason Kwok",
-    "email": "userscripts@jasonhk.dev"
+    "email": "userscripts@jasonhk.dev",
+    "name": "Jason Kwok"
   },
-  "type": "module",
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
@@ -22,5 +20,7 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-monkey": "catalog:"
-  }
+  },
+  "private": true,
+  "type": "module"
 }
