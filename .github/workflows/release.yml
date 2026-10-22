@@ -10,9 +10,14 @@ permissions:
   issues: write
   pull-requests: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+  queue: max
+
 jobs:
-  release:
-    name: Release
+  prepare_release:
+    name: Prepare release
     runs-on: ubuntu-latest
     outputs:
       releases_created: ${{ steps.release_please.outputs.releases_created }}
@@ -20,30 +25,64 @@ jobs:
       release_please_outputs: ${{ toJSON(steps.release_please.outputs) }}
     steps:
       - id: release_please
-        uses: googleapis/release-please-action@v4
+        name: Prepare release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
+        with:
+          skip-github-pull-request: true
 
-  build-released:
-    name: Build and Publish Released
-    needs: release
-    if: needs.release.outputs.releases_created == 'true'
+  release:
+    name: Release
+    needs: prepare_release
+    if: needs.prepare_release.outputs.releases_created == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     strategy:
       matrix:
-        path: ${{ fromJson(needs.release.outputs.paths_released) }}
+        path: ${{ fromJson(needs.prepare_release.outputs.paths_released) }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - name: Check out master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024
+        with:
+          require-lockfile: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: 24.x
-      - run: npm ci --workspaces --include-workspace-root
 
-      - name: Build UserScripts
-        run: npm run build -- --filter="./${{ matrix.path }}"
+      - name: Build userscript
+        run: pnpm --filter='./${{ matrix.path }}' run build
 
-      - name: Upload to GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload to GitHub release
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
         with:
-          tag_name: ${{ fromJSON(needs.release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}
-          fail_on_unmatched_files: true
+          tag_name: ${{ fromJSON(needs.prepare_release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}
+          draft: true
           files: |
+            ./${{ matrix.path }}/dist/*.meta.js
             ./${{ matrix.path }}/dist/*.user.js
+          fail_on_unmatched_files: true
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "${{ fromJSON(needs.prepare_release.outputs.release_please_outputs)[format('{0}--tag_name', matrix.path)] }}" --draft=false
+
+  draft_next_release:
+    name: Draft next release
+    needs:
+      - prepare_release
+      - release
+    if: always() && (needs.prepare_release.result == 'success') && ((needs.release.result == 'success') || (needs.release.result == 'skipped'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Draft release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
+        with:
+          skip-github-release: true
