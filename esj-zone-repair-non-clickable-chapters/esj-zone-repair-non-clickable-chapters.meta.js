@@ -3,7 +3,7 @@
 // @name:zh-TW         ESJ Zone：修復無法點擊的章節
 // @name:zh-CN         ESJ Zone：修复无法点击的章节
 // @namespace          https://jasonhk.dev/
-// @version            1.1.2
+// @version            1.1.3
 // @author             Jason Kwok
 // @description        Repair chapter links that were not-clickable due to for example, author misconfigured or by-designed.
 // @description:zh-TW  修復因作者設定錯誤或網頁設計問題等原因而無法點擊的章節連結。
