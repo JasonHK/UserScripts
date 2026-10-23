@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/JasonHK/UserScripts/compare/esj-zone-repair-non-clickable-chapters/v1.1.2...esj-zone-repair-non-clickable-chapters/v1.1.3) (2026-10-23)
+
+
+### Bug Fixes
+
+* **esj-zone-repair-non-clickable-chapters:** improve chapter name matching ([#18](https://github.com/JasonHK/UserScripts/issues/18)) ([79eeab1](https://github.com/JasonHK/UserScripts/commit/79eeab1b3ada3cc28f4732d59b833ce942e08193))
+
 ## [1.1.2](https://github.com/JasonHK/UserScripts/compare/esj-zone-repair-non-clickable-chapters/v1.1.1...esj-zone-repair-non-clickable-chapters/v1.1.2) (2026-10-22)
 
 
