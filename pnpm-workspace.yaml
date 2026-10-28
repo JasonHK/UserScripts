@@ -1,9 +1,13 @@
 packages:
   - userscripts/*
 
+allowBuilds:
+  "@parcel/watcher": false
+
 catalog:
   "@tsconfig/recommended": ^1.0.13
   queue: ^7.0.0
+  sass-embedded: ^1.106.1
   typescript: ^6.0.3
   vite: ^8.3.4
   vite-plugin-monkey: ^8.1.1
