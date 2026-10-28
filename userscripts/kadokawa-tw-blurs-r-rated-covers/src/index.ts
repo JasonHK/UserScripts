@@ -1,4 +1,4 @@
-import "./style.css?style";
+import classes from "./style.module.scss";
 
 const observer = new MutationObserver((records) => records.forEach((record) => ((record.target instanceof Element) && blurBookCovers(record.target))));
 document.querySelectorAll("#relatedProductList")
@@ -16,7 +16,7 @@ function blurBookCovers(container: Element)
         {
             if ((badge instanceof HTMLElement) && (badge.innerText.trim() === "限制級"))
             {
-                product.classList.add("nsfw");
+                product.classList.add(classes.nsfw);
                 break;
             }
         }

@@ -1,0 +1,52 @@
+:global(.product-item).nsfw
+{
+    :global(.boxify-image)
+    {
+        filter: blur(var(--nsfw-blur-radius, 7.5px));
+        transition: 0.4s, filter var(--nsfw-transition-duration, 0.3s);
+    }
+
+    &:hover, &:focus-within
+    {
+        :global(.boxify-image)
+        {
+            filter: blur(0px);
+        }
+
+        :global(.boxify-image-wrapper.multi-image)
+        {
+            :global(.boxify-image):nth-child(2)
+            {
+                animation: looping-covers var(--nsfw-looping-covers-duration, 5s) infinite alternate;
+            }
+
+            :global(.boxify-image):nth-child(3)
+            {
+                animation: looping-covers var(--nsfw-looping-covers-duration, 5s) infinite alternate-reverse;
+            }
+        }
+    }
+}
+
+@keyframes looping-covers
+{
+    from
+    {
+        opacity: 0;
+    }
+
+    45%
+    {
+        opacity: 0;
+    }
+
+    55%
+    {
+        opacity: 1;
+    }
+
+    to
+    {
+        opacity: 1;
+    }
+}
