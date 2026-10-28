@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.2](https://github.com/JasonHK/UserScripts/compare/kadokawa-tw-blurs-r-rated-covers/v2.1.1...kadokawa-tw-blurs-r-rated-covers/v2.1.2) (2026-10-28)
+
+
+### Bug Fixes
+
+* **kadokawa-tw-blurs-r-rated-covers:** broken blurring caused by regression ([#20](https://github.com/JasonHK/UserScripts/issues/20)) ([f71e9c1](https://github.com/JasonHK/UserScripts/commit/f71e9c1fa3f6a3281d7c219e1d329ebfa0a76c10))
+* **kadokawa-tw-blurs-r-rated-covers:** missing self-update URLs ([#22](https://github.com/JasonHK/UserScripts/issues/22)) ([63ae382](https://github.com/JasonHK/UserScripts/commit/63ae3821d1b7f0aa4c6808559c8efc7731c9a70a))
+
 ## [2.1.1](https://github.com/JasonHK/UserScripts/compare/kadokawa-tw-blurs-r-rated-covers/v2.1.0...kadokawa-tw-blurs-r-rated-covers/v2.1.1) (2026-03-17)
 
 
