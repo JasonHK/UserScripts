@@ -23,6 +23,8 @@ export default defineConfig(
                         ],
                         "run-at": "document-end",
                         "grant": "none",
+                        "updateURL": "https://github.com/JasonHK/UserScripts/raw/releases/kadokawa-tw-blurs-r-rated-covers/kadokawa-tw-blurs-r-rated-covers.meta.js",
+                        "downloadURL": "https://github.com/JasonHK/UserScripts/raw/releases/kadokawa-tw-blurs-r-rated-covers/kadokawa-tw-blurs-r-rated-covers.user.js",
                     },
                     build: {
                         metaFileName: true,
